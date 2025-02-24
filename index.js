@@ -25,7 +25,7 @@ export default function FirstTimerForm() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch("http://localhost:3001/submit", {
+      const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/submit`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -54,7 +54,7 @@ export default function FirstTimerForm() {
   };
 
   const handleDownload = () => {
-    window.location.href = "http://localhost:3001/download";
+    window.location.href = `${process.env.REACT_APP_BACKEND_URL}/download`;
   };
 
   return (
@@ -77,6 +77,12 @@ export default function FirstTimerForm() {
         <Button type="submit" className="w-full">Submit</Button>
       </form>
       {submitted && (
+        <Button onClick={handleDownload} className="w-full mt-4">Download as Excel</Button>
+      )}
+    </div>
+  );
+}
+
         <Button onClick={handleDownload} className="w-full mt-4">Download as Excel</Button>
       )}
     </div>
